@@ -97,15 +97,19 @@
     		<br><br>
              
       <%
+      
+      System.out.println("usuario"+session.getAttribute("usr"));
+  		System.out.println("usuario"+session.getAttribute("pwd"));
+      System.out.println("IdSesion" + session.getId());
+      
+      
 			String usr = request.getParameter("usr");
 			String pwd = request.getParameter("pwd");
-			System.out.println(usr + ", " + pwd);
+			System.out.println("Parametros string: "+usr + ", " + pwd);
 			//boolean acceso=false;
-			session.setAttribute("usr", usr);
-			session.setAttribute("pwd", pwd);
 			//Login login = new Login();
 			boolean entrada=dataManager.getUserAccess(usr, pwd);
-			System.out.println(entrada);
+			System.out.println("resultado de consulta a base de datos: "+entrada);
 			//System.out.println(login.getId());
 			if (!entrada){
 				
@@ -132,6 +136,8 @@
       
 		<% } 
 			else{ // accede 
+
+				session.setAttribute("usr", usr);
 				response.sendRedirect("admin.jsp?pagina=0");
 				
 			} %>

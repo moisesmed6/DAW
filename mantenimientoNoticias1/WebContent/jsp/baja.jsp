@@ -1,3 +1,11 @@
+<%
+if(session.getAttribute("usr")== null){
+	response.sendRedirect("login.jsp");		
+}else{
+	String usuario= (String) session.getAttribute("usr");
+}
+%>
+<%@page import="java.util.*" session="true"%>
 <%@page language="java" contentType="text/html"%>
 <%@page import="mantenimientoNoticias.beans.Agenda"%>
 <jsp:useBean id="dataManager" scope="application"
@@ -66,7 +74,7 @@
 <body>
    <header>
    
-                <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
               <div class="container">
                 <div class="navbar-header">
                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -75,12 +83,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="index.jsp">Java</a>
+                  <a class="navbar-brand" href="#">Java</a>
                 </div>
                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-               <li><a href="index.jsp">Inicio</a></li>
-                <li><a href="admin.jsp">Administrar</a></li>
+                <li><a href="admin.jsp?pagina=<%=pagena%>">Administrar</a></li>
+                <li class="active"><a href="#">Borrar</a></li>
+                <li><a href="cerrarSesion.jsp">Salir</a></li>
                <!-- <li><a href="#">Link</a></li>-->
                 <!--<li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejercicios<b class="caret"></b></a>
@@ -92,7 +101,6 @@
             </div>
               </div>
             </div>
- 
    </header>    
    
    

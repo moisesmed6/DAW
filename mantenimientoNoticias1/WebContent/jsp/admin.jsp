@@ -1,3 +1,10 @@
+<%
+if(session.getAttribute("usr")== null){
+	response.sendRedirect("login.jsp");		
+}else{
+	String usuario= (String) session.getAttribute("usr");
+}
+%>
 <%@page language="java" contentType="text/html"%>
 <%@page import="mantenimientoNoticias.beans.Agenda"%>
 <%@page import="java.util.Hashtable"%>
@@ -5,6 +12,11 @@
 <jsp:useBean id="dataManager" scope="application"
   class="mantenimientoNoticias.model.DataManager"/>
 <%
+	
+	System.out.println(session.getAttribute("usr"));
+	System.out.println(session.getAttribute("pwd"));
+    System.out.println("IdSesion" + session.getId());
+
   String base = (String)application.getAttribute("base");
   String imageURL = (String)application.getAttribute("imageURL");
   
@@ -52,7 +64,7 @@
 	      }
     
 	System.out.println(pagena);
-int min=pagena*7;
+	int min=pagena*7;
 	System.out.println(min);
 	
 	
@@ -109,7 +121,7 @@ int min=pagena*7;
 		//alert(tipo2);	
 		//alert(cabeza);
 		if(valor=="agregar"){
-			document.location.href="alta.jsp?agendaId="+tipo2+"&pagina=<%=pagena%>";
+			document.location.href="alta.jsp?&pagina=<%=pagena%>";
 			
 		}else{
 			
@@ -153,12 +165,12 @@ int min=pagena*7;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="index.jsp">Java</a>
+                  <a class="navbar-brand" href="#">Java</a>
                 </div>
                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><a href="index.jsp">Inicio</a></li>
                 <li class="active"><a href="#">Administrar</a></li>
+                <li><a href="cerrarSesion.jsp">Salir</a></li>
                <!-- <li><a href="#">Link</a></li>-->
                 <!--<li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejercicios<b class="caret"></b></a>
@@ -230,10 +242,20 @@ int paginas=(int)Math.ceil(pag);
       <li><a href="admin.jsp?pagina=0">&laquo;</a></li>
 <%      
 for(int i=0;i<=paginas;i++){
+	if(i==pagena){
 %>
- <li><a href="admin.jsp?pagina=<%=i%>"><%= (i+1) %></a></li>
+
+	
+ <li class="active"><a href="admin.jsp?pagina=<%=i%>"><%= (i+1) %></a></li>
+ 
 
 <%
+	}else{
+%>
+	<li><a href="admin.jsp?pagina=<%=i%>"><%= (i+1) %></a></li>
+<%
+
+	}
 }	
 %>
    <li><a href="admin.jsp?pagina=<%= paginas%>">&raquo;</a></li>
@@ -254,8 +276,8 @@ for(int i=0;i<7;i++) {
  %>
  
     <tr>
-  	   <td>
- 	<input type="radio" name="noticias" value="<%=(seccionId.toString()) %>"><%=(seccionesLimit.get(seccionId)) %></input><br></td>
+  	   <td><input type="radio" name="noticias" value="<%=(seccionId.toString()) %>" id="<%=(seccionId.toString()) %>"></input>
+  	   <label for="<%=(seccionId.toString()) %>"><%=(seccionesLimit.get(seccionId)) %></label></td>
 	</tr>
   
 

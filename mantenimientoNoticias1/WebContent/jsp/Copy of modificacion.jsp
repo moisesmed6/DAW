@@ -29,11 +29,7 @@ if(session.getAttribute("usr")== null){
 	      String seccion = request.getParameter("seccion");
 	      String cabecera = request.getParameter("cabecera");
 	      String texto = request.getParameter("texto");
-	      String dd = request.getParameter("dd");
-	      String mm = request.getParameter("mm");
-	      String aa = request.getParameter("aa");
-	      String fecha=aa+mm+dd;
-	      String foto = request.getParameter("foto");
+	      String fecha = request.getParameter("fecha");
 	      String precio = request.getParameter("precio");
 	      String agendaId = request.getParameter("agendaId");
 	     	datos.removeAll(datos);
@@ -41,7 +37,6 @@ if(session.getAttribute("usr")== null){
 	      datos.add(cabecera);
 	      datos.add(texto);
 	      datos.add(fecha);
-	      datos.add(foto);
 	      datos.add(precio);
 	      datos.add(agendaId);
 	      consulta=dataManager.actualizarNoticia(datos);
@@ -131,27 +126,6 @@ if(session.getAttribute("usr")== null){
 <!--<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />-->
 <!--<link rel="stylesheet" type="text/css" href="../css/indice.css">-->
   <title>Modificar libro</title>
-  
-  
-  <script type="text/javascript">
-  
-  var galeria = null;
-  function openImgManager() { //v2.0
-  	if(galeria && !galeria.closed) galeria.close(); 
-  	var left = screen.width - 465;
-    	galeria = window.open('cuadros.jsp','galeria','left='+left+',top=10,status=yes,scrollbars=yes,width=450,height=500');
-  }
-  function eliminarImagen(){
-  	document.forms[0]['foto'].value = "N/A";
-//  	var elem = getElementById("xxx");
-//  	elem.value="hola";
-  	document.forms[0].foto2.value = "N/A";
-  	document.forms[0].imgDisplay.src = "N/A";
-  	//document.forms[0].['imgDisplay'].src = "N/A";
-  	//document.forms[0].images[1].src = "N/A";
-     // document.images[0].src = "N/A";
-  }
-  </script>
 </head>
 <body>
    <header>
@@ -217,11 +191,6 @@ if(session.getAttribute("usr")== null){
   try {
     String agendaId = request.getParameter("agendaId");
     Agenda agenda = dataManager.getAgendaDetalles(agendaId);
-    
-    String dia= agenda.getFecha().substring(6, 8);
-    String mes= agenda.getFecha().substring(4, 6);
-    String anio= agenda.getFecha().substring(0, 4);
-    System.out.println(dia+", "+mes+", "+anio);
    
     @SuppressWarnings("unchecked")
     ArrayList <String> datas=(ArrayList<String>)session.getAttribute("datos");
@@ -244,88 +213,11 @@ if(session.getAttribute("usr")== null){
          	 <td><label>Contenido</label><br><textarea rows="10" name="texto" cols="100"><%=agenda.getTexto()%></textarea></td>
          </tr>
          <tr>
-         	 <td><label>Fecha</label><br>
-				<select name="dd">
-					<%
-						int valor=0;
-						String valora="0";
-						String ii="";
-						System.out.println("-------------------------------------------------------");
-						for(int i=1;i<=31;i++){
-							ii=Integer.toString(i);
-							valora= (i < 10)?(valora ="0" +ii):(valora = ii);
-							valor=Integer.parseInt(valora);
-							System.out.println(valora);
-							System.out.println(valor);
-							if(dia.equals(valora)){
-					%>
-					<option value="<%=valora%>" selected><%=valora%></option>
-					<%			
-							}else{
-								%>
-								<option value="<%=valora%>"><%=valora%></option>
-								<%								
-							}
-						}
-					%>
-				</select>
-				<select name="mm">
-					<%
-						int valor1=0;
-						String valora1="0";
-						String ii1="";
-						for(int i=1;i<=12;i++){
-							ii1=Integer.toString(i);
-							valora1= (i < 10)?(valora1 ="0" +ii1):(valora1 = ii1);
-							valor1=Integer.parseInt(valora1);
-							//System.out.println(valor);
-							if(mes.equals(valora1)){
-					%>
-					<option value="<%=valora1%>" selected><%=valora1%></option>
-					<%			
-							}else{
-								%>
-								<option value="<%=valora1%>"><%=valora1%></option>
-								<%								
-							}
-						}
-					%>
-				</select>
-				<select name="aa">
-					<%
-						int valor2=0;
-						String valora2="0";
-						String ii2="";
-						for(int i=1950;i<=2100;i++){
-							ii2=Integer.toString(i);
-							valora2= (i < 10)?(valora2 ="0" +ii2):(valora2 = ii2);
-							valor2=Integer.parseInt(valora2);
-							//System.out.println(valor);
-							if(anio.equals(valora2)){
-					%>
-					<option value="<%=valora2%>" selected><%=valora2%></option>
-					<%			
-							}else{
-								%>
-								<option value="<%=valora2%>"><%=valora2%></option>
-								<%								
-							}
-						}
-					%>
-				</select>
-			</td>
+         	 <td><input type="text" name="fecha" value="<%=agenda.getFecha()%>"></input></td>
          </tr>
+          <!--  <input type="text" value="<%=agenda.getFoto()%>"></input><br>-->
          <tr>
-         	<td>
-          		<label>Foto</label><br>
-          		<input type="text" value="<%=agenda.getFoto()%>" readonly name="foto" id="nombreFoto"></input><br>
-          		<img id="fotito" name="imgDisplay" src="../images/<%=agenda.getFoto()%>"/><br>
-          		<a href="#" onClick="eliminarImagen()">eliminar imagen</a>&nbsp;|&nbsp;
-          		<a href="#" onClick="openImgManager()">escoger imagen de galer&iacute;a </a>
-          	</td>
-          </tr>
-         <tr>
-          	<td><label>Precio</label><br><input type="text" name="precio" value="<%=agenda.getPrecio()%>"></input></td>
+          	<td><input type="text" name="precio" value="<%=agenda.getPrecio()%>"></input></td>
          </tr>
          <tr>
           	<td>
@@ -340,7 +232,7 @@ if(session.getAttribute("usr")== null){
         </table>
         </form>
         
-  <!--  public void makeNumList($from,$cuantos,$nombre,$selected){
+  <!--       function makeNumList($from,$cuantos,$nombre,$selected){
 	echo"\n\t<select name=\"$nombre\">\n\t";
 	for ($n=$from; $n<($from+$cuantos);$n++){
 		$poner = ($n < 10)?($poner = "0".$n):($poner = $n);
