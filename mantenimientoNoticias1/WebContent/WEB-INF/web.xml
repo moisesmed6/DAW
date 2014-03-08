@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>mantenimientoNoticias1</display-name>
+  <servlet>
+    <description>
+		</description>
+    <display-name>NoticiasServlet</display-name>
+    <servlet-name>NoticiasServlet</servlet-name>
+    <servlet-class>mantenimientoNoticias1.NoticiasServlet</servlet-class>
+    <init-param>
+      <param-name>base</param-name>
+   <param-value>/mantenimientoNoticias1/noticias</param-value>
+    </init-param>
+    <init-param>
+      <param-name>imageURL</param-name>
+      <param-value>/mantenimientoNoticias1/images/</param-value>
+    </init-param>
+    <init-param>
+      <param-name>jdbcDriver</param-name>
+      <param-value>com.mysql.jdbc.Driver</param-value>
+    </init-param>
+    <init-param>
+      <param-name>dbURL</param-name>
+      <param-value>jdbc:mysql://localhost:3306/noticias</param-value>
+    </init-param>
+    <init-param>
+      <param-name>dbUserName</param-name>
+      <param-value>root</param-value>
+    </init-param>
+    <init-param>
+      <param-name>dbPassword</param-name>
+      <param-value>12345</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NoticiasServlet</servlet-name>
+    <url-pattern>/noticias/*</url-pattern>
+  </servlet-mapping>
+</web-app>
