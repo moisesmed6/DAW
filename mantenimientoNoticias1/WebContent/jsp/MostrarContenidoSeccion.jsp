@@ -4,7 +4,20 @@
 <%@page import="mantenimientoNoticias.beans.Agenda"%>
 <jsp:useBean id="dataManager" scope="application"
   class="mantenimientoNoticias.model.DataManager"/>
-<% String base = (String)application.getAttribute("base"); %>
+<% String base = (String)application.getAttribute("base"); 
+
+ 
+String seccionId = request.getParameter("id");
+String nombreSeccion = null;
+if (seccionId != null && !seccionId.trim().equals("")) {
+  try {
+    nombreSeccion = dataManager.getDescripcionSeccion(seccionId);
+    }
+  catch(NumberFormatException e) {}
+  }
+
+
+%>
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
@@ -58,6 +71,7 @@
               <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Inicio</a></li>
                  <li><a href="/mantenimientoNoticias1/jsp/login.jsp">Login</a></li>
+                 <li class="active"><a href="#"><%=nombreSeccion%></a></li>
                <!-- <li><a href="#">Link</a></li>-->
                 <!--<li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejercicios<b class="caret"></b></a>
@@ -92,14 +106,7 @@
     </div>-->
   
 <%     
-  String seccionId = request.getParameter("id");
-  String nombreSeccion = null;
-  if (seccionId != null && !seccionId.trim().equals("")) {
-    try {
-      nombreSeccion = dataManager.getDescripcionSeccion(seccionId);
-      }
-    catch(NumberFormatException e) {}
-    }
+ 
   if (nombreSeccion != null) {
   %>
    
@@ -121,7 +128,7 @@
   %>
           <tr>
             <td><%=agenda.getCabecera()%></td>
-            <td><a class="btn btn-primary" href="<%=base%>?action=verNoticia&agendaId=<%=pId%>">Detalles</a></td>
+            <td><a class="btn btn-primary" href="<%=base%>?action=verNoticia&agendaId=<%=pId%>&id=<%=seccionId%>">Detalles</a></td>
           </tr>
 <%
           }

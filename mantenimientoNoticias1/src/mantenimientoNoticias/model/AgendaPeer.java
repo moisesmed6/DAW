@@ -224,13 +224,13 @@ return secciones;
   public static int actualizarNoticiaBaseDatos(Statement stmt, ArrayList <String> datos) throws SQLException {
 	    String sql;
 	   
-	    	System.out.println(datos.get(0));
-		  System.out.println(datos.get(1));
-		  System.out.println(datos.get(2));
-		  System.out.println(datos.get(3));
-		  System.out.println(datos.get(4));
-		  System.out.println(datos.get(5));
-		  System.out.println("quien soy yo:"+datos.get(6));
+	  //    System.out.println(datos.get(0));
+	//	  System.out.println(datos.get(1));
+	//	  System.out.println(datos.get(2));
+	//	  System.out.println(datos.get(3));
+	//	  System.out.println(datos.get(4));
+	//	  System.out.println(datos.get(5));
+	//	  System.out.println("quien soy yo:"+datos.get(6));
 	  
 	      sql = "UPDATE `agenda` SET seccion='"+datos.get(0)+"', cabecera='"+datos.get(1)+"', " +
 	      		"texto='"+datos.get(2)+"', fecha='"+datos.get(3)+"', foto='"+datos.get(4)+"', precio='"+datos.get(5)+"' where id="+datos.get(6)+"";
@@ -241,7 +241,7 @@ return secciones;
 	      
 	      
 	     int resultado=stmt.executeUpdate(sql);
-	     System.out.println("resultado"+resultado);
+	   //  System.out.println("resultado"+resultado);
 	     
 	     return resultado;
 	     /* UPDATE `agenda` SET `id`=[value-1],`seccion`=[value-2],`cabecera`=[value-3],
@@ -258,18 +258,18 @@ return secciones;
   public static int anadirNoticiaBaseDatos(Statement stmt, ArrayList <String> datos) throws SQLException {
 	    String sql;
 	   
-	  System.out.println(datos.get(0));
-	  System.out.println(datos.get(1));
-	  System.out.println(datos.get(2));
-	  System.out.println(datos.get(3));
-	  System.out.println(datos.get(4));
-	  System.out.println(datos.get(5));
-	  System.out.println(datos.get(6));
+	//  System.out.println(datos.get(0));
+	//  System.out.println(datos.get(1));
+	//  System.out.println(datos.get(2));
+	//  System.out.println(datos.get(3));
+	//  System.out.println(datos.get(4));
+	//  System.out.println(datos.get(5));
+	//  System.out.println(datos.get(6));
 	  
 	      sql = "INSERT INTO `agenda` ( `seccion`, `cabecera`, `texto`,`fecha`, `foto`, `precio`) VALUES"+
 	      "("+datos.get(0)+",'"+datos.get(1)+"','"+datos.get(2)+"','"+datos.get(3)+"','"+datos.get(4)+"',"+datos.get(5)+")";
 	      
-	   System.out.println(sql);
+	 //  System.out.println(sql);
 	      
 	     /* UPDATE  `noticias`.`agenda` SET  `cabecera` =  'prueba2asdasdasd',
 	    		  `texto` =  'españa cañíasdf',
@@ -277,7 +277,7 @@ return secciones;
 	      
 	      
 	     int resultado=stmt.executeUpdate(sql);
-	     System.out.println("resultado"+resultado);
+	  //   System.out.println("resultado"+resultado);
 	     
 	     return resultado;
 	     /* UPDATE `agenda` SET `id`=[value-1],`seccion`=[value-2],`cabecera`=[value-3],

@@ -113,10 +113,10 @@
   
 <%
 
-System.out.println(session.getAttribute("usr"));
-System.out.println(session.getAttribute("pwd"));
-System.out.println("IdSesion" + session.getId());
-System.out.println("Nueva" + session.isNew());
+//System.out.println(session.getAttribute("usr"));
+//System.out.println(session.getAttribute("pwd"));
+//System.out.println("IdSesion" + session.getId());
+//System.out.println("Nueva" + session.isNew());
 
 
     Hashtable<String, String> secciones = dataManager.getSecciones();

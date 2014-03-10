@@ -105,6 +105,7 @@
               <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Inicio</a></li>
                  <li><a href="/mantenimientoNoticias1/jsp/login.jsp">Login</a></li>
+                  <li class="active"><a href="#">Carrito</a></li>
                <!-- <li><a href="#">Link</a></li>-->
                 <!--<li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejercicios<b class="caret"></b></a>

@@ -72,9 +72,9 @@ if(session.getAttribute("usr")== null){
 	String v= (dias < 10)?(v ="0" +a):(v = a);
 	z=Integer.parseInt(v);
 	
-	System.out.println("anio: "+anio);
-	System.out.println("mes: "+meses);
-	System.out.println("dia: "+v);
+	//System.out.println("anio: "+anio);
+	//System.out.println("mes: "+meses);
+	//System.out.println("dia: "+v);
     
 	
 	
@@ -156,6 +156,7 @@ if(session.getAttribute("usr")== null){
                 <li><a href="admin.jsp?pagina=<%=pagena%>">Administrar</a></li>
                 <li class="active"><a href="#">Agregar</a></li>
                 <li><a href="cerrarSesion.jsp">Salir</a></li>
+                <li><a href="#"><%=session.getAttribute("usr") %></a></li>
                <!-- <li><a href="#">Link</a></li>-->
                 <!--<li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejercicios<b class="caret"></b></a>

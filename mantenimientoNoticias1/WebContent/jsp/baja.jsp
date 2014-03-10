@@ -90,6 +90,7 @@ if(session.getAttribute("usr")== null){
                 <li><a href="admin.jsp?pagina=<%=pagena%>">Administrar</a></li>
                 <li class="active"><a href="#">Borrar</a></li>
                 <li><a href="cerrarSesion.jsp">Salir</a></li>
+                <li><a href="#"><%=session.getAttribute("usr") %></a></li>
                <!-- <li><a href="#">Link</a></li>-->
                 <!--<li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejercicios<b class="caret"></b></a>

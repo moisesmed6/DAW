@@ -82,6 +82,13 @@
  
       <img class="img-thumbnail" name="Nestor4.gif" src="../images/Nestor4.gif" alt="Nestor4"  onclick="abrirVentana(this.name, this.src);return false" />
   </div>
+  
+   <div class="col-md-12">
+      <img  class="img-thumbnail" name="06.jpg" src="../images/06.jpg" alt="..."  onclick="abrirVentana(this.name, this.src);return false" />
+      <img  class="img-thumbnail" name="1063305321.jpg" src="../images/1063305321.jpg" alt="..."  onclick="abrirVentana(this.name, this.src);return false" />
+   </div>
+   
+   
 	</div>       
 		  <hr>
 

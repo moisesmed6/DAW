@@ -172,6 +172,7 @@ if(session.getAttribute("usr")== null){
                 <li><a href="admin.jsp?pagina=<%=pagena%>">Administrar</a></li>
                 <li class="active"><a href="#">Editar</a></li>
                 <li><a href="cerrarSesion.jsp">Salir</a></li>
+                <li><a href="#"><%=session.getAttribute("usr") %></a></li>
                <!-- <li><a href="#">Link</a></li>-->
                 <!--<li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejercicios<b class="caret"></b></a>
@@ -221,7 +222,7 @@ if(session.getAttribute("usr")== null){
     String dia= agenda.getFecha().substring(6, 8);
     String mes= agenda.getFecha().substring(4, 6);
     String anio= agenda.getFecha().substring(0, 4);
-    System.out.println(dia+", "+mes+", "+anio);
+    //System.out.println(dia+", "+mes+", "+anio);
    
     @SuppressWarnings("unchecked")
     ArrayList <String> datas=(ArrayList<String>)session.getAttribute("datos");
@@ -250,13 +251,13 @@ if(session.getAttribute("usr")== null){
 						int valor=0;
 						String valora="0";
 						String ii="";
-						System.out.println("-------------------------------------------------------");
+						//System.out.println("-------------------------------------------------------");
 						for(int i=1;i<=31;i++){
 							ii=Integer.toString(i);
 							valora= (i < 10)?(valora ="0" +ii):(valora = ii);
 							valor=Integer.parseInt(valora);
-							System.out.println(valora);
-							System.out.println(valor);
+							//System.out.println(valora);
+							//System.out.println(valor);
 							if(dia.equals(valora)){
 					%>
 					<option value="<%=valora%>" selected><%=valora%></option>

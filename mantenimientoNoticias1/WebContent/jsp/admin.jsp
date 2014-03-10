@@ -13,9 +13,9 @@ if(session.getAttribute("usr")== null){
   class="mantenimientoNoticias.model.DataManager"/>
 <%
 	
-	System.out.println(session.getAttribute("usr"));
-	System.out.println(session.getAttribute("pwd"));
-    System.out.println("IdSesion" + session.getId());
+	//System.out.println(session.getAttribute("usr"));
+	//System.out.println(session.getAttribute("pwd"));
+    //System.out.println("IdSesion" + session.getId());
 
   String base = (String)application.getAttribute("base");
   String imageURL = (String)application.getAttribute("imageURL");
@@ -63,9 +63,9 @@ if(session.getAttribute("usr")== null){
 	      //out.println("Error deleting the selected item from the database!");
 	      }
     
-	System.out.println(pagena);
+	//System.out.println(pagena);
 	int min=pagena*7;
-	System.out.println(min);
+	//System.out.println(min);
 	
 	
 	
@@ -171,6 +171,7 @@ if(session.getAttribute("usr")== null){
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Administrar</a></li>
                 <li><a href="cerrarSesion.jsp">Salir</a></li>
+                <li><a href="#"><%=session.getAttribute("usr") %></a></li>
                <!-- <li><a href="#">Link</a></li>-->
                 <!--<li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejercicios<b class="caret"></b></a>
@@ -230,7 +231,7 @@ int maximo =secciones.size();
 
 float pag=maximo/7;
 int paginas=(int)Math.ceil(pag);
-	System.out.println(paginas);
+	//System.out.println(paginas);
 
 %>
 

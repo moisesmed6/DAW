@@ -5,6 +5,19 @@
 <%
   String base = (String)application.getAttribute("base");
   String imageURL = (String)application.getAttribute("imageURL");
+  
+
+String seccionId = request.getParameter("id");
+String nombreSeccion = null;
+if (seccionId != null && !seccionId.trim().equals("")) {
+  try {
+    nombreSeccion = dataManager.getDescripcionSeccion(seccionId);
+    }
+  catch(NumberFormatException e) {}
+  }
+
+  
+  
   %>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -44,7 +57,7 @@
 <body>
    <header>
    
-                <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
               <div class="container">
                 <div class="navbar-header">
                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -59,6 +72,7 @@
               <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Inicio</a></li>
                  <li><a href="/mantenimientoNoticias1/jsp/login.jsp">Login</a></li>
+                 <li class="active"><a href="#"><%=nombreSeccion%></a></li>
                <!-- <li><a href="#">Link</a></li>-->
                 <!--<li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejercicios<b class="caret"></b></a>
